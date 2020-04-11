@@ -3,13 +3,11 @@ require_relative "../config/environment.rb"
 class Student
   attr_accessor :id, :name, :grade
 
-
   def initialize(id=nil, name, grade)
     @id = id
     @name = name
     @grade = grade
   end
-
 
   def self.create_table
     sql = <<-SQL 
@@ -39,7 +37,6 @@ class Student
       @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     end
   end
-
 
   def self.create(name, grade)
     student = Student.new(name, grade)
